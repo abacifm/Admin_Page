@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("./images/background.jpeg"); /* Set your background image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#header-container {
+    color: #fff; /* You can set your desired text color */
+    padding: 10px;
+    text-align: center;
+}
+#logout-button {
+    font-family: 'Gabriola', cursive;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    left: 1000px;
+    margin: 20px;
+    padding: 60px;
+    cursor: pointer;
+}
+#logout-button img {
+    width: 30px; /* Set the width of the image */
+    height: 20px; /* Set the height of the image */
+    margin-right: -5px; /* Adjust the margin between the image and text */
+    margin-bottom: -5px; /* Adjust the margin between the image and text */
+    
+}
+
+#logo-container {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    padding: 60px;
+}
+
+#title-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+}
+
+#title-line1,
+#title-line2 {
+    margin: 0;
+}
+
+#body-container {
+    font-family: 'Gabriola', cursive;
+    padding: 20px; /* Adjust the padding as needed */
+    margin-left: 0px;
+    
+}
+#dropdown-container {
+    margin-top: 50px; /* Adjust the margin as needed */
+    margin-right: 150px;
+    text-align: center;
+    
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    width: 500px;
+    text-align: center;
+}
+
+label, select {
+    font-family: 'Gabriola', cursive;
+}
+label {
+    color: white;
+    font-size: 30px;
+}
+
+#file-type {
+    width: 400px; /* Set the width of the dropdown for better spacing */
+}
+
+#file-type option {
+    padding-left: 25px; /* Adjust the padding to make room for the icon */
+    background-repeat: no-repeat;
+    background-position: left center; /* Adjust the position of the icon */
+}
+
+#file-type option[value="text1"] {
+    background-image: url("./images/TextIcon.png"); /* Set the path to the text icon */
+}
+
+#file-type option[value="image"] {
+    background-image: url("./images/Image-Icon.png"); /* Set the path to the image icon */
+}
+
+
+
+.footer {
+    color: #fff; /* Set your desired text color */
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0fr; /* Three equal columns */
+    gap: 20px; /* Adjust the gap between columns as needed */
+    margin-left: 300px;
+}
+
+.copyright, .footer1, .footer2 {
+    font-family: 'Gabriola', cursive;
+}
+
+.copyright {
+    text-align: left;
+    font: 1em gabriola,;
+}
+
+.footer1 {
+    text-align: center;
+}
+
+.footer2 {
+    text-align: right;
+    
+}
