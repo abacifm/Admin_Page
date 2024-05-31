@@ -1,66 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-  <link rel="stylesheet" href="./styles/login.css">
-  <link rel="stylesheet" href="./styles/watch.css">
-
-  <title>Login</title>
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
-  <!-- Replace the following with your Firebase project's config -->
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyA2FmQnF0v1K_tqJs3LKejTEcFU58Yt1fY",
-      authDomain: "atlantalogin-8d8af.firebaseapp.com",
-      projectId: "atlantalogin-8d8af",
-      storageBucket: "atlantalogin-8d8af.appspot.com",
-      messagingSenderId: "316673201886",
-      appId: "1:316673201886:web:d5d80a5aa8609d5711144f"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Number Authentication</title>
+    <script src="https://www.googleapis.com/identitytoolkit/v3/recaptcha.js"></script>
+    <script src="https://www.firebaseapp.com/__/firebase/9.8.2/firebase-app.js"></script>
+    <script src="https://www.firebaseapp.com/__/firebase/9.8.2/firebase-auth.js"></script>
+    <script src="path/to/phone-auth-library.js"></script>
 </head>
-
 <body>
+    <h1>Phone Number Authentication</h1>
+    <div id="phone-container">
+        <input type="tel" id="phone-number" placeholder="Enter Phone Number">
+        <button id="send-code-button">Send Code</button>
+    </div>
+    <div id="verification-container" style="display: none;">
+        <input type="text" id="verification-code" placeholder="Enter Verification Code">
+        <button id="verify-code-button">Verify Code</button>
+    </div>
+    <script>
+        // Firebase configuration (replace with your project details)
+        const firebaseConfig = {
+          apiKey: "AIzaSyAK3UDUYBhgi8Nq_5JYjw1XJqJDbIIed8k",
+          authDomain: "testadmin-df87a.firebaseapp.com",
+          projectId: "testadmin-df87a",
+          storageBucket: "testadmin-df87a.appspot.com",
+          messagingSenderId: "208329433882",
+          appId: "1:208329433882:web:0127c3753fc6ab17fb42a3"
+        };
 
-  <div id="login-form">
-    <h2>Login</h2>
-    <input type="email" id="email" placeholder="Email" required><br>
-    <input type="password" id="password" placeholder="Password" required><br>
-    <button onclick="login()">Login</button>
-    <p id="message"></p>
-  </div>
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
 
-  <script>
-    function login() {
-      var email = document.getElementById('email').value;
-      var password = document.getElementById('password').value;
+        const phoneNumberInput = document.getElementById('phone-number');
+        const sendCodeButton = document.getElementById('send-code-button');
+        const verificationCodeInput = document.getElementById('verification-code');
+        const verifyCodeButton = document.getElementById('verify-code-button');
+        const phoneContainer = document.getElementById('phone-container');
+        const verificationContainer = document.getElementById('verification-container');
 
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // Signed in
-          var user = userCredential.user;
-          document.getElementById('message').innerHTML = "Login successful";
-          // You can redirect the user to another page after successful login
-          window.location.href = "TextAnnouncement.html";
-        })
-        .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          document.getElementById('message').innerHTML = errorMessage;
+        sendCodeButton.addEventListener('click', async () => {
+            const phoneNumber = phoneNumberInput.value;
+            // Replace with your phone number verification library function
+            const verificationId = await initiatePhoneNumberVerification(phoneNumber);
+            phoneContainer.style.display = 'none';
+            verificationContainer.style.display = 'block';
         });
-    }
-  </script>
 
-  </div>
+        verifyCodeButton.addEventListener('click', async () => {
+            const verificationCode = verificationCodeInput.value;
+            const credential = await signInWithPhoneNumber(verificationId, verificationCode);
+            // User is authenticated, handle success
+        });
+    </script>
 </body>
-
 </html>

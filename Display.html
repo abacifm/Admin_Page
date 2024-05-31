@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cloud Firestore Display Page</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script>
+    // Replace with your Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAy1XWpAdAkUQT0exu-DnWoTaGj8KJzuTE",
+        authDomain: "testinputdisplay.firebaseapp.com",
+        projectId: "testinputdisplay",
+        storageBucket: "testinputdisplay.appspot.com",
+        messagingSenderId: "852611691619",
+        appId: "1:852611691619:web:1aea56180c9012fcccb456"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Function to display data from Firestore
+    function displayData() {
+      const messagesContainer = document.getElementById('messages');
+      messagesContainer.innerHTML = ''; // Clear existing data
+
+      // Get all documents from the "messages" collection
+      db.collection('messages').get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const name = doc.data().name;
+          const message = doc.data().message;
+          const messageElement = document.createElement('div');
+          messageElement.innerHTML = `<strong>${name}:</strong> ${message}`;
+          messagesContainer.appendChild(messageElement);
+        });
+      })
+      .catch((error) => {
+        console.error('Error getting documents: ', error);
+      });
+    }
+
+    // Call displayData on page load
+    window.onload = displayData;
+  </script>
+</head>
+<body>
+  <h1>Display</h1>
+
+  <div id="messages"></div>
+</body>
+</html>
