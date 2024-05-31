@@ -6,12 +6,14 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    justify-content: center;
+    align-items: center;
 }
 
 #header-container {
     color: #fff; /* You can set your desired text color */
     padding: 10px;
-    text-align: center;
+    text-align: flex;
 }
 #logout-button {
     font-family: 'Gabriola', cursive;
@@ -28,7 +30,7 @@ body {
     height: 20px; /* Set the height of the image */
     margin-right: -5px; /* Adjust the margin between the image and text */
     margin-bottom: -5px; /* Adjust the margin between the image and text */
-    
+
 }
 
 #logo-container {
@@ -54,13 +56,13 @@ body {
     font-family: 'Gabriola', cursive;
     padding: 20px; /* Adjust the padding as needed */
     margin-left: 0px;
-    
+
 }
 #dropdown-container {
     margin-top: 50px; /* Adjust the margin as needed */
     margin-right: 150px;
     text-align: center;
-    
+
 }
 
 select {
@@ -127,5 +129,5 @@ footer {
 
 .footer2 {
     text-align: right;
-    
+
 }

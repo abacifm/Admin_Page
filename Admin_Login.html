@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+  <link rel="stylesheet" href="./styles/login.css">
+  <link rel="stylesheet" href="./styles/watch.css">
+
+  <title>Login</title>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+  <!-- Replace the following with your Firebase project's config -->
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyA2FmQnF0v1K_tqJs3LKejTEcFU58Yt1fY",
+      authDomain: "atlantalogin-8d8af.firebaseapp.com",
+      projectId: "atlantalogin-8d8af",
+      storageBucket: "atlantalogin-8d8af.appspot.com",
+      messagingSenderId: "316673201886",
+      appId: "1:316673201886:web:d5d80a5aa8609d5711144f"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+
+<body>
+
+  <div id="login-form">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button onclick="login()">Login</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function login() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Signed in
+          var user = userCredential.user;
+          document.getElementById('message').innerHTML = "Login successful";
+          // You can redirect the user to another page after successful login
+          window.location.href = "TextAnnouncement.html";
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          document.getElementById('message').innerHTML = errorMessage;
+        });
+    }
+  </script>
+
+  </div>
+</body>
+
+</html>

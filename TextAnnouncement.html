@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextAnnouncement</title>
+    <link rel="stylesheet" href="announcement.css">
+
+</head>
+
+<body>
+    <!--header-->
+    <div id="header-container">
+        <div id="logo-container">
+            <img src="./images/apostolic-church-logo.png" alt="Atlanta Bethel Apostolic Church Logo" width="60"
+                height="60">
+            <div id="title-container">
+                <p id="title-line1">ATLANTA BETHEL APOSTOLIC CHURCH</p>
+                <p id="title-line2">INTERNATIONAL FELLOWSHIP MINISTRY</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li class="current"><a href="Home.html">HOME</a></li>
+                <li><a href="About.html">ABOUT US</a></li>
+                <li><a href="Ministries.html">MINISTRIES</a></li>
+                <li><a href="Watch.html">WATCH</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+    <div class="container">
+        <h2><label>Text Announcement Form </label> </h2>
+        <form class="display: left-3" action="#" method="post" enctype="multipart/form-data">
+            <div>
+                <label>Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <br\>
+                    <label for="file">Upload File</label>
+                    <input type="file" id="file" name="file" required>
+            </div>
+            <div class="form-group">
+                <label for="expiration-date">Expiration Date:</label>
+                <input type="date" id="expiration-date" name="expiration-date" required>
+            </div>
+            <div class="post-button">
+                <input type="submit" value="Submit">
+                <input type="submit" value="Post">
+            </div>
+        </form>
+    </div>
+
+</body>
+
+
+</html>
